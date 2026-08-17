@@ -1,12 +1,9 @@
 public class Principal {
     public static void main(String[] args) {
-        ContaBancaria conta1 = new ContaBancaria();
-        conta1.titular = "Miguel";
-        conta1.saldo = 1000.0;
+        ContaBancaria conta1 = new ContaBancaria("Miguel", 1800);
 
-        ContaBancaria conta2 = new ContaBancaria();
-        conta2.titular = "Pedro";
-        conta2.saldo = 1500.0;
+
+        ContaBancaria conta2 = new ContaBancaria("Arthur", 1000);
 
         conta1.depositar(500.0);
         conta2.depositar(300.0);
@@ -24,6 +21,11 @@ public class Principal {
         System.out.println("---------------------------------");
 
         conta1.transferir(conta2, 300.0);
+        
+        System.out.println("---------------------------------");
+        
+        conta1.aplicarRendimento(5.0);
+        conta2.aplicarRendimento(1000.0);
 
         System.out.println("---------------------------------");
 
