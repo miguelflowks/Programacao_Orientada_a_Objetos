@@ -6,8 +6,11 @@ public class Principal {
         Produto produto1 = new Produto("Playstation 2", 200.00);
 
         Pedido pedido1 = new Pedido(cliente1, produto1, 2);
+        Pedido pedido2 = new Pedido(cliente1, produto1, 10);
 
         pedido1.resumo();
+        System.out.println("--------------------------------------");
+        pedido2.resumo();
         
     }
     
