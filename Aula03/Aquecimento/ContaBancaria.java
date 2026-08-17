@@ -1,12 +1,13 @@
 public class ContaBancaria {
-    String titular;
+    
+    Titular titular;
     double saldo;
     int operacoes;
 
-    ContaBancaria(String nome, double saldoInicial) {
-        this.titular = nome;
+    ContaBancaria(Titular titular, double saldoInicial) {
+        this.titular = titular;
         this.saldo = saldoInicial;
-        
+        this.operacoes = 0;
     }
 
     void depositar(double valor) { // Já determina que os valores devem ser maiores que 0, caso contrário, não será possível realizar o depósito.
@@ -30,7 +31,7 @@ public class ContaBancaria {
     }
 
     void exibirSaldo() {
-        System.out.println("Titular: " + titular + " | Saldo: " + saldo);
+        System.out.println("Titular: " + titular.nome + " | Saldo: " + saldo);
         System.out.println("Total de operações: " + operacoes);
     }
 
