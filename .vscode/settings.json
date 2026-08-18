@@ -1,8 +1,8 @@
 {
     "java.project.sourcePaths": [
-        "Aula03/Aquecimento",
+        "Aula03/Atividade1",
         "Aula02",
-        "Aula03/Atividade1"
+        "Aula03/Atividade2"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }
