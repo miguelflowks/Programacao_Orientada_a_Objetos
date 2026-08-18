@@ -4,7 +4,7 @@ public class Paciente {
 
     Paciente(String nome, int telefone) {
         this.nome = nome;
-        this.telefone = nome;
+        this.telefone = telefone;
     }
     
 }

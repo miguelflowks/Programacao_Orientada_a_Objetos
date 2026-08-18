@@ -12,7 +12,7 @@ public class Consulta {
         this.valor = valor;
     }
 
-    exibirComprovante() {
+    void exibirComprovante() {
         System.out.println("Paciente: " + paciente.nome);
         System.out.println("Data da consulta: " + data);
         System.out.println("Valor Total: " + valor);

@@ -9,8 +9,6 @@ public class Principal {
         Consulta consulta1 = new Consulta(paciente1, LocalDate.of(2026, 1, 16), 1200.00);
 
         consulta1.exibirComprovante();
-
-
     }
     
 }
