@@ -8,7 +8,7 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.ano = ano;
-        this.emprestado = false;
+        this.emprestado = emprestado;
     }
 
     void exibirFicha() {
@@ -18,10 +18,19 @@ public class Livro {
     }
 
     void emprestar() {
-        if (emprestado == false) {
+        if (!emprestado) {
             emprestado = true;
-        } else { 
+        } else {
             System.out.println("O livro já está sendo utilizado...");
+        }
+    }
+
+    void devolver() {
+        if (emprestado) {
+            emprestado = false;
+            System.out.println("Livro devolvido com sucesso!");
+        } else {
+            System.out.println("O livro não está emprestado...");
         }
     }
 }
