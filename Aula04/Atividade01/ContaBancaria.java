@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public class ContaBancaria {
 
     private Titular titular;
     private double saldo;
-    private int operacoes = 0;
+    private ArrayList<Movimentacao> movimentacoes = new ArrayList<>();
 
     ContaBancaria(Titular titular) {
         this.titular = titular;
@@ -14,7 +16,7 @@ public class ContaBancaria {
             System.out.println("Depósito inválido na conta de " + titular.getNome() + ": R$ " + valor);
         } else {
             saldo = saldo + valor;
-            operacoes = operacoes + 1;
+            movimentacoes.add(new Movimentacao("Depósito", valor));
             System.out.println("Depósito de R$ " + valor + " na conta de " + titular.getNome());
         }
     }
@@ -26,7 +28,7 @@ public class ContaBancaria {
                     + ": saque R$ " + valor + " mais tarifa, saldo R$ " + saldo);
         } else {
             saldo = saldo - custo;
-            operacoes = operacoes + 1;
+            movimentacoes.add(new Movimentacao("Saque", valor));
             System.out.println("Saque de R$ " + valor + " (tarifa R$ 0.5) na conta de " + titular.getNome());
         }
     }
@@ -41,15 +43,18 @@ public class ContaBancaria {
     }
 
     void exibirSaldo() {
-        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo + " (" + operacoes + " operações)");
+        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo);
     }
 
     public double getSaldo() {
         return this.saldo;
     }
 
-    public int getOperacoes() {
-        return this.operacoes;
+    void exibirMovimentacoes() {
+        for (Movimentacao movimentacao : movimentacoes) {
+            System.out.println(movimentacao);
+        }
     }
+
 }
 
