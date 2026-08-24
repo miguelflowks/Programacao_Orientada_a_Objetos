@@ -1,5 +1,6 @@
 public class ContaBancaria {
 
+    private Titular titular;
     Titular titular;
     double saldo;
     int operacoes;
