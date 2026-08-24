@@ -15,7 +15,6 @@ public class Titular {
             System.out.println("Nome inválido...");
             return;
         }
-        
         this.nome = nome;
     }
 
