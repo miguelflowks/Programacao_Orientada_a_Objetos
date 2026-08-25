@@ -4,19 +4,48 @@ public class ContaBancaria {
 
     private Titular titular;
     private double saldo;
-    private ArrayList<Movimentacao> movimentacoes = new ArrayList<>();
+    private ArrayList<Double> movimentacoes = new ArrayList<>();
 
     ContaBancaria(Titular titular) {
         this.titular = titular;
         this.saldo = 0;
     }
 
+    void exibirExtrato() {
+        for(Double mov : movimentacoes) {
+            System.out.println("\nMovimentacao: " + mov);
+        }
+    }
+
+    void mostrarTotalDepositado() {
+        Double valorTotal = 0.00;
+        for(Double mov : movimentacoes) {
+            if (mov > 0) {
+                valorTotal += mov;
+            }
+        }
+
+        System.out.println("Total Depositado: " + valorTotal);
+    }
+
+    void mostrarMaiorSaque() {
+        Double maiorSaque = movimentacoes.get(0);
+
+        for(Double mov : movimentacoes) {
+            if(mov < maiorSaque) {
+                maiorSaque = mov;
+            }
+        }
+
+        System.out.println("Maior Saque: " + maiorSaque);
+    }
+     
     void depositar(double valor) {
         if (valor <= 0) {
             System.out.println("Depósito inválido na conta de " + titular.getNome() + ": R$ " + valor);
         } else {
             saldo = saldo + valor;
-            movimentacoes.add(new Movimentacao("Depósito", valor));
+            movimentacoes.add(valor);
             System.out.println("Depósito de R$ " + valor + " na conta de " + titular.getNome());
         }
     }
@@ -28,7 +57,7 @@ public class ContaBancaria {
                     + ": saque R$ " + valor + " mais tarifa, saldo R$ " + saldo);
         } else {
             saldo = saldo - custo;
-            movimentacoes.add(new Movimentacao("Saque", valor));
+            movimentacoes.add(valor * -1);
             System.out.println("Saque de R$ " + valor + " (tarifa R$ 0.5) na conta de " + titular.getNome());
         }
     }
@@ -43,18 +72,7 @@ public class ContaBancaria {
     }
 
     void exibirSaldo() {
-        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo);
+        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo 
+        + " em " + movimentacoes.size() + " transações");
     }
-
-    public double getSaldo() {
-        return this.saldo;
-    }
-
-    void exibirMovimentacoes() {
-        for (Movimentacao movimentacao : movimentacoes) {
-            System.out.println(movimentacao);
-        }
-    }
-
 }
-
