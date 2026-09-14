@@ -1,24 +1,23 @@
 public class Titular {
-    private String nome;
-    private String cpf;
-    private String dataNasc;
+        private String nome;
+        private String cpf;
+        private String data;
 
     Titular(String nome, String cpf, String data) {
         this.nome = nome;
         this.cpf = cpf;
-        this.dataNasc = data;
+        this.data = data;
     }
 
-    public void setNome(String nome) {
-        if (nome == null || nome.isEmpty()) {
-            System.out.println("Nome inválido");
+    public void setTitular(String novoNome) {
+        if (novoNome == null || novoNome.isEmpty()) {
+            System.out.println("Nome Invalido");
             return;
         }
-
-        this.nome = nome;
+        this.nome = novoNome;
+        
     }
-
-    public String getNome() {
+    public String getTitular() {
         return this.nome;
     }
 

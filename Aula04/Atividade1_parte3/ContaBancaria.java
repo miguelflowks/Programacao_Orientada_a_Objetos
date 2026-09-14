@@ -1,78 +1,89 @@
 import java.util.ArrayList;
 
 public class ContaBancaria {
-
     private Titular titular;
+
     private double saldo;
-    private ArrayList<Double> movimentacoes = new ArrayList<>();
+    private int operacoes;
 
-    ContaBancaria(Titular titular) {
-        this.titular = titular;
-        this.saldo = 0;
+    private ArrayList<Double> movimentacoes;
+
+
+    ContaBancaria(Titular nome, double saldoInicial) {
+        this.titular = nome;
+        this.saldo = saldoInicial;
+        this.operacoes = 0;
+        this.movimentacoes = new ArrayList<>();
+        
     }
 
-    void exibirExtrato() {
-        for(Double mov : movimentacoes) {
-            System.out.println("\nMovimentacao: " + mov);
-        }
-    }
 
-    void mostrarTotalDepositado() {
-        Double valorTotal = 0.00;
-        for(Double mov : movimentacoes) {
-            if (mov > 0) {
-                valorTotal += mov;
-            }
-        }
-
-        System.out.println("Total Depositado: " + valorTotal);
-    }
-
-    void mostrarMaiorSaque() {
-        Double maiorSaque = movimentacoes.get(0);
-
-        for(Double mov : movimentacoes) {
-            if(mov < maiorSaque) {
-                maiorSaque = mov;
-            }
-        }
-
-        System.out.println("Maior Saque: " + maiorSaque);
-    }
-     
     void depositar(double valor) {
-        if (valor <= 0) {
-            System.out.println("Depósito inválido na conta de " + titular.getNome() + ": R$ " + valor);
-        } else {
-            saldo = saldo + valor;
+        if (valor > 0){
+            saldo += valor;
+            System.out.println("\nDeposito concluido!");
             movimentacoes.add(valor);
-            System.out.println("Depósito de R$ " + valor + " na conta de " + titular.getNome());
+            operacoes ++;
+        }else{
+            System.out.println("Deposite um saldo positivo!");
         }
     }
-
     void sacar(double valor) {
-        double custo = valor + 0.50;
-        if (custo > saldo) {
-            System.out.println("Saldo insuficiente na conta de " + titular.getNome()
-                    + ": saque R$ " + valor + " mais tarifa, saldo R$ " + saldo);
+        valor += 0.50;
+        if (valor > 0 && saldo >= valor) {
+            saldo -= valor;
+            System.out.println("\nSaque concluido!");
+            movimentacoes.add((-valor));
+            operacoes ++;
         } else {
-            saldo = saldo - custo;
-            movimentacoes.add(valor * -1);
-            System.out.println("Saque de R$ " + valor + " (tarifa R$ 0.5) na conta de " + titular.getNome());
+            System.out.println("\nSaque Invalido - Valor Exedido");
         }
     }
 
-    void aplicarRendimento(double percentual) {
-        if (percentual < 0 || percentual > 100) {
-            System.out.println("Percentual inválido: " + percentual);
+
+    void aplicarPercentual(double percentual){
+        if (percentual >= 0 && percentual <= 100){
+            double valor = saldo + (saldo*(percentual/100));
+            System.out.println("\nSeu percentual de: "+percentual+"% é de: "+valor+" baseado no seu saldo atual!");
         } else {
-            saldo = saldo + saldo * percentual / 100;
-            System.out.println("Rendimento de " + percentual + "% na conta de " + titular.getNome());
+            System.out.println("\nValor de percentual invalido!");
         }
     }
 
-    void exibirSaldo() {
-        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo 
-        + " em " + movimentacoes.size() + " transações");
+    public double getSaldo() {
+        return this.saldo;
+    }   
+    
+    public int getOperacoes() {
+        return this.operacoes;
+
+    }
+
+    public String getNome() {
+        return titular.getTitular();
+    }
+
+    public void exibirExtrato() {
+        System.out.println("\nUltimas movimentações: ");
+        for (Double movimentacao : movimentacoes) {
+            System.out.println(movimentacao);
+    }}
+
+    public void totalDepositado() {
+        Double soma = 0.0;
+        for (Double movimentacao : movimentacoes) {
+            if (movimentacao > 0) {
+                soma += movimentacao;
+            }}
+        System.out.print("\nTotal depositado no mês: "+soma);
+    }
+
+    public void maiorSaque() {
+        Double maior = 0.0;
+        for (Double movimentacao : movimentacoes) {
+            if (movimentacao < maior){
+                maior = movimentacao;
+            }}
+        System.out.println("\nSeu maior saque foi de: "+maior);
     }
 }
