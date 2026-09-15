@@ -12,11 +12,10 @@ public class Principal {
         while (opcao != 0) {
             System.out.println("\n1 - Criar conta");
             System.out.println("2 - Depositar");
-            System.out.println("3 - Sacar");
-            System.out.println("4 - Aplicar percentual");
-            System.out.println("5 - Ver saldo e dados");
-            System.out.println("6 - Ver extrato");
-            System.out.println("7 - Listar contas");
+            System.out.println("3 - Sacar (50 de TODAS as contas)");
+            System.out.println("4 - Ver saldo e dados");
+            System.out.println("5 - Ver extrato");
+            System.out.println("6 - Listar contas");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
 
@@ -30,10 +29,23 @@ public class Principal {
                 System.out.print("Saldo inicial: ");
                 double saldoInicial = sc.nextDouble();
 
-                Titular titular = new Titular(nome, "000", null);
-                ContaBancaria novaConta = new ContaBancaria(titular, saldoInicial);
-                contas.add(novaConta);
+                // Dando a opção para instanciar as subclasses (Polimorfismo)
+                System.out.println("Qual o tipo da conta?");
+                System.out.println("1 - Conta Corrente");
+                System.out.println("2 - Conta Poupança");
+                System.out.print("Escolha: ");
+                int tipoConta = sc.nextInt();
 
+                Titular titular = new Titular(nome, "000", null);
+                ContaBancaria novaConta;
+
+                if (tipoConta == 1) {
+                    novaConta = new ContaCorrente(titular, saldoInicial);
+                } else {
+                    novaConta = new ContaPoupanca(titular, saldoInicial);
+                }
+                
+                contas.add(novaConta);
                 System.out.println("Conta criada! Número: " + (contas.size() - 1));
 
             } else if (opcao == 2) {
@@ -45,22 +57,20 @@ public class Principal {
                 }
 
             } else if (opcao == 3) {
-                ContaBancaria conta = escolherConta(sc, contas);
-                if (conta != null) {
-                    System.out.print("Valor do saque: ");
-                    double valor = sc.nextDouble();
-                    conta.sacar(valor);
+                if (contas.isEmpty()) {
+                    System.out.println("Nenhuma conta criada ainda!");
+                } else {
+                    System.out.println("Realizando saque de 50 em todas as contas (Polimorfismo em ação)...");
+                    
+                    // O seu FOR exatamente como você pediu
+                    for (int i = 0; i < contas.size(); i++) {
+                        contas.get(i).sacar(50);
+                    }
+                    
+                    System.out.println("Saques realizados com sucesso!");
                 }
 
             } else if (opcao == 4) {
-                ContaBancaria conta = escolherConta(sc, contas);
-                if (conta != null) {
-                    System.out.print("Percentual: ");
-                    double percentual = sc.nextDouble();
-                    conta.aplicarPercentual(percentual);
-                }
-
-            } else if (opcao == 5) {
                 ContaBancaria conta = escolherConta(sc, contas);
                 if (conta != null) {
                     System.out.println("\nTitular: " + conta.getNome());
@@ -68,13 +78,13 @@ public class Principal {
                     System.out.println("Operações: " + conta.getOperacoes());
                 }
 
-            } else if (opcao == 6) {
+            } else if (opcao == 5) {
                 ContaBancaria conta = escolherConta(sc, contas);
                 if (conta != null) {
                     conta.exibirExtrato();
                 }
 
-            } else if (opcao == 7) {
+            } else if (opcao == 6) {
                 for (int i = 0; i < contas.size(); i++) {
                     System.out.println(i + " - " + contas.get(i).getNome());
                 }

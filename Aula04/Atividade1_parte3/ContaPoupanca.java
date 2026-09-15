@@ -1,7 +1,7 @@
 public class ContaPoupanca extends ContaBancaria {
 
-    ContaPoupanca(Titular titular) {
-        super(titular); 
+    ContaPoupanca(Titular titular, double saldoInicial) {
+        super(titular, saldoInicial); 
     }
     
     void aplicarPercentual(double percentual){
@@ -12,7 +12,4 @@ public class ContaPoupanca extends ContaBancaria {
             System.out.println("\nValor de percentual invalido!");
         }
     }
-
-
-
 }
