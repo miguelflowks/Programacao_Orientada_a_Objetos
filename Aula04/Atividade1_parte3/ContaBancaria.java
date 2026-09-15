@@ -3,10 +3,9 @@ import java.util.ArrayList;
 public class ContaBancaria {
     private Titular titular;
 
-    private double saldo;
+    protected double saldo;
     private int operacoes;
-
-    private ArrayList<Double> movimentacoes;
+    protected ArrayList<Double> movimentacoes;
 
 
     ContaBancaria(Titular nome, double saldoInicial) {
@@ -36,16 +35,6 @@ public class ContaBancaria {
             operacoes ++;
         } else {
             System.out.println("\nSaque Invalido - Valor Exedido");
-        }
-    }
-
-
-    void aplicarPercentual(double percentual){
-        if (percentual >= 0 && percentual <= 100){
-            double valor = saldo + (saldo*(percentual/100));
-            System.out.println("\nSeu percentual de: "+percentual+"% é de: "+valor+" baseado no seu saldo atual!");
-        } else {
-            System.out.println("\nValor de percentual invalido!");
         }
     }
 
