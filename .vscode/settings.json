@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "Aula04/Atividade1_parte3",
         "Aula04/Atividade01",
-        "Aula04/Atividade1_parte3"
+        "Aula04/Atividade_Private"
     ],
     "java.debug.settings.onBuildFailureProceed": true
 }
