@@ -2,7 +2,7 @@ package Atividade1;
 
 public class Produto {
     String nome;
-    Double preco;
+    double preco;
     int estoque;
 
 
