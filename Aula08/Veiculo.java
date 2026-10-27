@@ -1,5 +1,4 @@
-public class Veiculo {
-    
+public abstract class Veiculo implements Entregavel {
     private String placa;
     private double capacidadeQuilos;
 
@@ -16,6 +15,7 @@ public class Veiculo {
         return capacidadeQuilos;
     }
 
+    @Override
     public double calcularCusto(double distanciaKm) {
         return distanciaKm * 2.0;
     }

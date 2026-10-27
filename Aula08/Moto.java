@@ -6,6 +6,6 @@ public class Moto extends Veiculo {
 
     @Override
     public double calcularCusto(double distanciaKm) {
-        return super.calcularCusto(distanciaKm) / 2.0;
+        return super.calcularCusto(distanciaKm) / 2.0; // aqui ele simplesmente pega o custo base que já existe e divide por 2, porque a moto é metade
     }
 }

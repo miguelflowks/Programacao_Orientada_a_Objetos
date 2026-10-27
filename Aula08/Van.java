@@ -4,4 +4,6 @@ public class Van extends Veiculo {
         super(placa, capacidadeQuilos);
     }
 
+    // como a van é só custo base, não vai nada
+
 }
