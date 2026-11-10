@@ -8,7 +8,6 @@ public class RelatorioConsole implements RelatorioService {
 
     @Override
     public void gerarRelatorio(ControlePedidos controle) {
-        System.out.println("= RELATÓRIO DE FECHAMENTO DO DIA =");
         System.out.println("--- Lista de Pedidos ---");
 
         for (Pedido p : controle.getPedidos()) {
@@ -32,6 +31,5 @@ public class RelatorioConsole implements RelatorioService {
                 + maisCaro.getCliente().getNome() 
                 + " (R$ " + maisCaro.calcularValorTotal() + ")");
         }
-        System.out.println("===================");
     }
 }
