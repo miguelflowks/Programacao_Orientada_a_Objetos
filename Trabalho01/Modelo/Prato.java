@@ -1,4 +1,4 @@
-package Cardapio;
+package modelo;
 
 public abstract class Prato {
     
