@@ -1,5 +1,7 @@
 package modelo;
 
+import excecoes.PrecoInvalidoException;
+
 public abstract class Prato {
     
     private String nome;
