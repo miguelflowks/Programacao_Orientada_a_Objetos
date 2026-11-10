@@ -1,4 +1,4 @@
-package relatorio;
+package relatorios;
 
 import servico.ControlePedidos;
 

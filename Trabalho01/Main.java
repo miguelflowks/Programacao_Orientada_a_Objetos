@@ -4,8 +4,8 @@ import modelo.Combo;
 import modelo.Pedido;
 import modelo.PratoEspecial;
 import modelo.PratoExecutivo;
-import relatorio.RelatorioConsole;
-import relatorio.RelatorioService;
+import relatorios.RelatorioConsole;
+import relatorios.RelatorioService;
 import servico.ControlePedidos;
 
 public class Main {
