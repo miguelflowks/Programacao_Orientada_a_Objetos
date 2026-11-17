@@ -32,6 +32,8 @@ public class Main {
         Pedido pedido2 = new Pedido(cliente2);
         pedido2.adicionarPrato(new PratoEspecial("Picanha do Lula Premium", 50.0, 25, 20.0));
 
+        pedido3.adicionarPrato(new PratoSemGluten("Strogonoff Zero", 75.0, 15, 20.0));
+
         controle.adicionarPedido(pedido1);
         controle.adicionarPedido(pedido2);
 
